@@ -1,0 +1,12 @@
+{
+  "name": "questao-08",
+  "version": "1.0.0",
+  "main": "app.mjs",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

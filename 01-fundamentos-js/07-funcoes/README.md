@@ -380,3 +380,108 @@ const numbers = [1, 2, 3, 4, 5, 6, 7];
 const oddNumbers = numbers.filter((n) => n % 2 == 1);
 console.log(oddNumbers); // [1, 3, 5, 7]
 ```
+
+### Módulos
+
+**Criação de Módulo Básico (CommonJS)**: Crie um módulo em CommonJS chamado saudacao.js que exporta uma função saudar(nome), que recebe um nome e retorna uma saudação (por exemplo, "Olá, {nome}!"). Em seguida, importe esse módulo em outro arquivo e chame a função.
+
+**Criação de Módulo Básico (ESM)**
+Crie um módulo em ESM chamado saudacao.mjs que exporta uma função saudar(nome) como uma export default. Importe o módulo em outro arquivo .mjs e execute a função.
+
+**Exportação e Importação de Vários Itens (CommonJS)**: Crie um módulo CommonJS chamado math.js que exporta duas funções: somar(a, b) e multiplicar(a, b). Importe o módulo em outro arquivo e use ambas as funções.
+
+**Exportação e Importação de Vários Itens (ESM)**: Crie um módulo ESM chamado math.mjs que exporta duas funções: somar(a, b) e multiplicar(a, b) usando export nomeado. Em outro arquivo .mjs, importe as duas funções e execute-as.
+
+**Criando e Usando um Módulo de Configuração (CommonJS):** Crie um módulo config.js em CommonJS que exporte um objeto de configurações com uma chave nomeDoProjeto e um valor (por exemplo, "Meu Projeto"). Importe o módulo em app.js e exiba o valor de nomeDoProjeto.
+
+**Criando um Módulo Utilitário com Várias Funções (ESM)**
+Crie um módulo util.mjs que exporta múltiplas funções úteis (somaArray, maiorValor, menorValor). Importe todas as funções no app.mjs usando import * as util.
+
+**Importação Dinâmica com ESM**
+No app.mjs, use import() para importar dinamicamente um módulo mensagem.mjs que exporta uma função exibirMensagem. A função deve ser importada e chamada quando uma condição (ex.: uma variável carregarMensagem) for true.
+
+**Conversão de Módulos CommonJS para ESM**
+Comece com um módulo mathCommonJS.js em CommonJS que exporta duas funções (adicionar e subtrair). Converta-o para um módulo ESM mathESM.mjs com os mesmos métodos e use import para testá-lo em um arquivo app.mjs.
+```js
+// mathCommonJS.js
+module.exports = {
+  adicionar: (a, b) => a + b,
+  subtrair: (a, b) => a - b
+};
+```
+
+### Promise
+**Criando uma Promise Simples**: Crie uma função verificarNumeroPar(numero) que retorna uma Promise. A promessa deve ser resolvida se o número for par e rejeitada se for ímpar.
+
+#### RESPOSTA:
+```js
+function verificarNumeroPar(numero) {
+  return new Promise((resolve, reject) => {
+    if (numero % 2 == 0) {
+      resolve(`O número ${numero} é par`)
+    } else {
+      reject(`O número ${numero} é ímpar`)
+    }
+  })
+}
+```
+
+**Consumindo uma Promise com .then e .catch**
+Use a função verificarNumeroPar() do exercício anterior para verificar se um número é par ou ímpar. Chame a função e exiba o resultado com .then() para o sucesso e .catch() para o erro.
+
+#### RESPOSTA:
+```js
+verificarNumeroPar(2).then((resultado) => {
+  console.log(resultado)
+}).catch((err) => {
+  console.error(err)
+})
+
+verificarNumeroPar(3).then((resultado) => {
+  console.log(resultado)
+}).catch((err) => {
+  console.error(err)
+})
+```
+
+**Encadeamento de Promises**
+Crie duas funções que retornem promessas: dobrarNumero(numero) (que dobra o número) e incrementarNumero(numero) (que incrementa o número em 1). Encadeie essas duas promessas para dobrar e depois incrementar o número inicial.
+
+#### RESPOSTA:
+```js
+function dobrarNumero(numero) {
+  return Promise.resolve(numero * 2)
+}
+
+function incrementarNumero(numero) {
+  return Promise.resolve(numero + 1)
+}
+
+async function main() {
+  const resultado = await dobrarNumero(5).then(incrementarNumero)
+  console.log(resultado)
+}
+
+main()
+```
+
+**Usando Async/Await com Promises** Crie uma função assíncrona processarNumero(numero) que usa dobrarNumero() e incrementarNumero() (do exercício 3) para dobrar e, em seguida, incrementar o número usando await.
+
+#### RESPOSTA:
+```js
+function dobrarNumero(numero) {
+  return Promise.resolve(numero * 2)
+}
+
+function incrementarNumero(numero) {
+  return Promise.resolve(numero + 1)
+}
+
+async function processarNumero(numero) {
+  const dobrado = await dobrarNumero(numero)
+  const incrementado = await incrementarNumero(dobrado)
+  console.log(incrementado)
+}
+
+processarNumero(50)
+```
