@@ -19,9 +19,15 @@ function exponenciacao(n1, n2) {
 
 ## Crie um programa utilizando uma função para calcular a quantidade nascimentos de coelhos, de acordo com a sequência de fibonacci, após 12 meses.
 ```js
+const memo = []
 function fibonacci(mes) {
     if (mes === 0 || mes === 1) return mes
-    return fibonacci(mes - 1) + fibonacci(mes - 2)
+
+    if (memo[mes]) {
+        return memo[mes]
+    } else {
+        return fibonacci(mes - 1) + fibonacci(mes - 2)
+    }
 }
 const resultado = fibonacci(12)
 console.log(resultado)
