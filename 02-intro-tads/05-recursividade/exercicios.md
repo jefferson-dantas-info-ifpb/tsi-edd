@@ -1,7 +1,7 @@
 ## Crie uma função recursiva para obter a multiplicação a partir de operações de soma
 ```js
 function multiplicacao(n1, n2) {
-    if (n2 === 0) return 0
+    if (n2 === 1) return n1
     return multiplicacao(n1, n2 - 1) + n1
 }
 ```
