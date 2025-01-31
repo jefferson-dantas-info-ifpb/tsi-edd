@@ -1,36 +1,82 @@
-export class Queue {
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+export class LinkedQueue {
   constructor() {
-    this.items = [];
+    this._front = null;
+    this._tail = null;
+    this._size = 0;
   }
 
-  enqueue(element) {
-    this.items.push(element);
+  enqueue(value) {
+    const node = new Node(value);
+    if (this.isEmpty()) {
+      this._front = node;
+      this._tail = node;
+    } else {
+      this._tail.next = node;
+      this._tail = node;
+    }
+    this._size++;
+    return value;
   }
 
   dequeue() {
     if (this.isEmpty()) {
       return "A fila está vazia";
     }
-    return this.items.shift();
-  }
 
-  size() {
-    return this.items.length;
-  }
-
-  isEmpty() {
-    return this.items.length === 0;
+    const front = this.front();
+    this._front = this._front.next;
+    this._size--;
+    return front;
   }
 
   front() {
-    return this.isEmpty() ? "A fila está vazia" : items[0];
+    if (this.isEmpty()) {
+      return "A fila está vazia";
+    }
+
+    return this._front.value;
   }
 
   rear() {
-    return this.isEmpty() ? "A fila está vazia" : items[size() - 1];
+    if (this.isEmpty()) {
+      return "A fila está vazia";
+    }
+
+    return this._tail.value;
   }
 
-  clear() {
-    this.items = [];
+  size() {
+    return this._size;
+  }
+
+  isEmpty() {
+    return this.size() === 0;
+  }
+
+  print() {
+    let front = this._front;
+    let pos = 1;
+    while (front !== null) {
+      console.log(pos + ": " + front.value);
+      front = front.next;
+      pos++;
+    }
+  }
+
+  toArray() {
+    const array = [];
+    let front = this._front;
+    while (front !== null) {
+      array.push(front.value);
+      front = front.next;
+    }
+    return array;
   }
 }
