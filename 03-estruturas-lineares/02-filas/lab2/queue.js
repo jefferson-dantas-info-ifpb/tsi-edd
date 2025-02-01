@@ -1,6 +1,7 @@
 class Node {
-  constructor(value) {
-    this.value = value;
+  constructor(name, ticket) {
+    this.name = name;
+    this.ticket = ticket;
     this.next = null;
   }
 }
@@ -10,10 +11,11 @@ export class LinkedQueue {
     this._front = null;
     this._tail = null;
     this._size = 0;
+    this._ticket = 0;
   }
 
-  enqueue(value) {
-    const node = new Node(value);
+  enqueue(name) {
+    const node = new Node(name, ++this._ticket);
     if (this.isEmpty()) {
       this._front = node;
       this._tail = node;
@@ -22,12 +24,12 @@ export class LinkedQueue {
       this._tail = node;
     }
     this._size++;
-    return value;
+    return node;
   }
 
   dequeue() {
     if (this.isEmpty()) {
-      return "A fila está vazia";
+      return null;
     }
 
     const front = this.front();
@@ -38,18 +40,18 @@ export class LinkedQueue {
 
   front() {
     if (this.isEmpty()) {
-      return "A fila está vazia";
+      return null;
     }
 
-    return this._front.value;
+    return this._front;
   }
 
   rear() {
     if (this.isEmpty()) {
-      return "A fila está vazia";
+      return null;
     }
 
-    return this._tail.value;
+    return this._tail;
   }
 
   size() {
@@ -60,11 +62,25 @@ export class LinkedQueue {
     return this.size() === 0;
   }
 
+  find(name) {
+    let front = this._front;
+    let pos = 1;
+    while (front !== null) {
+      if (front.name === name) {
+        return { node: front, pos };
+      }
+      front = front.next;
+      pos++;
+    }
+    return { node: null, pos: -1 };
+  }
+
   print() {
     let front = this._front;
     let pos = 1;
     while (front !== null) {
-      console.log(pos + ": " + front.value);
+      const ticket = "BD" + front.ticket.toString().padStart(4, "0");
+      console.log(pos + ": " + front.name + " (" + ticket + ")");
       front = front.next;
       pos++;
     }
@@ -74,7 +90,7 @@ export class LinkedQueue {
     const array = [];
     let front = this._front;
     while (front !== null) {
-      array.push(front.value);
+      array.push(front.name);
       front = front.next;
     }
     return array;

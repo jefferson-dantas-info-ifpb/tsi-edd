@@ -1,9 +1,14 @@
 import cors from "cors";
 import express from "express";
-import { Queue } from "./queue";
+import { LinkedQueue } from "./queue.js";
 
 const app = express();
-const queue = new Queue();
+const queue = new LinkedQueue();
+queue.enqueue("Ana Silva Oliveira");
+queue.enqueue("Bruno Souza Santos");
+queue.enqueue("Carla Lima Pereira");
+queue.enqueue("Daniel Costa Almeida");
+queue.enqueue("Ester Santos Lima");
 
 app.use(cors());
 app.use(express.json());
@@ -16,19 +21,26 @@ app.get("/queue", (req, res) => {
 
 app.post("/enqueue", (req, res) => {
   const element = req.body.element;
-  queue.enqueue(element);
-  res.send({ element: element, pos: queue.size() });
+  const node = queue.enqueue(element);
+  res.send({ name: node.name, ticket: node.ticket, pos: queue.size() });
 });
 
-app.get("/enqueue/:element", function (req, res) {
-  const element = req.params.element;
-  queue.enqueue(element);
-  res.send({ element: element, pos: queue.size() });
+app.post("/find", (req, res) => {
+  const element = req.body.element;
+  const { node, pos } = queue.find(element);
+  res.send({
+    name: node?.name || null,
+    ticket: node?.ticket || null,
+    pos: pos,
+  });
 });
 
 app.get("/dequeue", function (req, res) {
-  const element = queue.dequeue();
-  res.send({ element: element });
+  const node = queue.dequeue();
+  res.send({
+    name: node?.name || null,
+    ticket: node?.ticket || null,
+  });
 });
 
 app.get("/size", function (req, res) {
@@ -37,13 +49,19 @@ app.get("/size", function (req, res) {
 });
 
 app.get("/front", function (req, res) {
-  const front = queue.front();
-  res.send({ front: front });
+  const node = queue.front();
+  res.send({
+    name: node?.name || null,
+    ticket: node?.ticket || null,
+  });
 });
 
 app.get("/rear", function (req, res) {
-  const rear = queue.rear();
-  res.send({ rear: rear });
+  const node = queue.rear();
+  res.send({
+    name: node?.name || null,
+    ticket: node?.ticket || null,
+  });
 });
 
 app.get("/isEmpty", function (req, res) {

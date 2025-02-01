@@ -1,0 +1,15 @@
+#tela-principal.alerta {
+  animation: alerta-piscante 0.5s infinite;
+  animation-iteration-count: 10;
+}
+
+@keyframes alerta-piscante {
+  from,
+  to {
+    filter: invert(0%);
+  }
+  
+  50% {
+    filter: invert(100%);
+  }
+}

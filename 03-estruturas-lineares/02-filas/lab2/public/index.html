@@ -3,17 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>Banco Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   </head>
 
-  <body
-    class="bg-gray-100 flex items-center justify-center flex-col min-h-screen"
-  >
-    <h1 class="text-9xl font-thin">Olá!</h1>
-    <p>Por favor, escolha uma opção</p>
-    <a href="senha.html">Pegar Senha</a>
-    <a href="fila.html">Ver Fila</a>
-    <a href="atendente.html">Tela do Atendente</a>
+  <body class="flex h-screen">
+    <div class="w-72 bg-blue-700 flex flex-col border-r-[1rem] border-orange-400">
+      <div class="flex-1 text-white flex flex-col justify-center mb-4" style="writing-mode: sideways-lr">
+        <div class="text-8xl font-extrabold">BANCO<br />DIGITAL</div>
+        <div class="text-xl ml-2 italic">O banco da tecnologia</div>
+      </div>
+      <div>
+        <img src="img/bench.svg" alt="Logo do Banco" />
+      </div>
+    </div>
+
+    <div class="flex flex-col flex-1 bg-blue-50 p-4 items-center justify-center text-center">
+      <div class="text-blue-700 text-3xl font-bold mb-4">BOAS VINDAS AO BANCO DIGITAL</div>
+      <div class="text-xl mb-8">Por favor, selecione uma opção</div>
+
+      <a
+        href="atendimento.html"
+        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
+      >
+        <div class="flex-1">Atendimento</div>
+        <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>
+      </a>
+
+      <a
+        href="fila.html"
+        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
+      >
+        <div class="flex-1">Consultar Posição na Fila</div>
+        <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>
+      </a>
+
+      <a
+        href="tela.html"
+        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
+      >
+        <div class="flex-1">Tela</div>
+        <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>
+      </a>
+
+      <a
+        href="atendente.html"
+        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
+      >
+        <div class="flex-1">Tela do Atendente</div>
+        <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>
+      </a>
+    </div>
   </body>
 </html>
