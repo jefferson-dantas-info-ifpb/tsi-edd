@@ -6,7 +6,7 @@ $chamar.addEventListener("click", chamarProximo);
 
 async function verificar() {
   try {
-    const response = await fetch("http://localhost:3000/front");
+    const response = await fetch("/front");
     const { name, ticket } = await response.json();
 
     $cliente.textContent = name || "---------------";
@@ -34,7 +34,7 @@ async function chamarProximo() {
   setLoading(true);
 
   try {
-    await fetch("http://localhost:3000/dequeue");
+    await fetch("/dequeue");
   } catch (error) {
     alert("Erro ao chamar próximo cliente!");
   }

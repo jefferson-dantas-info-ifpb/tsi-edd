@@ -7,7 +7,7 @@ const alerta = new Audio("sounds/alerta.mp3");
 
 async function verificar() {
   try {
-    const response = await fetch("http://localhost:3000/front");
+    const response = await fetch("/front");
     const { name, ticket } = await response.json();
 
     $cliente.textContent = name || "---------------";
