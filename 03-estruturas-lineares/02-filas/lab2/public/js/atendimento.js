@@ -27,13 +27,17 @@ async function continuar() {
     return;
   }
 
-  let prioridade = 0;
+  let maiorPrioridade = 0;
+  let quantidadePrioridades = 0;
   for (const $prioridade of $prioridades) {
     if ($prioridade.checked) {
+      quantidadePrioridades++;
       const valor = parseInt($prioridade.value);
-      if (prioridade < valor) prioridade = valor;
+      if (maiorPrioridade < valor) maiorPrioridade = valor;
     }
   }
+
+  const prioridade = maiorPrioridade + quantidadePrioridades;
 
   setLoading(true);
 
