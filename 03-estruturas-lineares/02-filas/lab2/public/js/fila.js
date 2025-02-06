@@ -6,6 +6,7 @@ const $nome = document.querySelector("#nome");
 const $posicao = document.querySelector("#posicao");
 const $senha = document.querySelector("#senha");
 const $cliente = document.querySelector("#cliente");
+const $prioridade = document.querySelector("#prioridade");
 
 $continuar.addEventListener("click", continuar);
 
@@ -29,11 +30,12 @@ async function continuar() {
     });
 
     const json = await response.json();
-    const { name, ticket, pos } = json;
+    const { name, ticket, priority, pos } = json;
 
     if (name && ticket && pos >= 1) {
       $cliente.textContent = name;
       $senha.textContent = `BD${ticket.toString().padStart(4, "0")}`;
+      $prioridade.style.display = priority === 0 ? "none" : null;
       $posicao.textContent = pos;
       $telaPrincipal.style.display = "none";
       $telaPronto.style.display = null;

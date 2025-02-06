@@ -1,12 +1,13 @@
 class Node {
-  constructor(name, ticket) {
+  constructor(name, ticket, priority = 0) {
     this.name = name;
     this.ticket = ticket;
+    this.priority = priority;
     this.next = null;
   }
 }
 
-export class LinkedQueue {
+export class PriorityQueue {
   constructor() {
     this._front = null;
     this._tail = null;
@@ -14,17 +15,54 @@ export class LinkedQueue {
     this._ticket = 0;
   }
 
-  enqueue(name) {
-    const node = new Node(name, ++this._ticket);
+  enqueue(name, priority = 0) {
+    const node = new Node(name, ++this._ticket, priority);
+
+    let position = 1;
+
+    // Fila vazia
     if (this.isEmpty()) {
       this._front = node;
       this._tail = node;
-    } else {
-      this._tail.next = node;
-      this._tail = node;
     }
+
+    // Se a prioridade do primeiro node for menor que a prioridade do novo node, insere na frente
+    else if (this._front.priority < node.priority) {
+      node.next = this._front;
+      this._front = node;
+    }
+
+    // Procura a posição correta para inserir o node
+    else {
+      let current = this._front;
+
+      while (current !== null) {
+        position++;
+
+        // Se não houver next significa que está no último node, então o node é inserido no final
+        if (!current.next) {
+          current.next = node;
+          this._tail = node;
+          break;
+        } else {
+          // Se a prioridade do próximo node for menor que a prioridade do novo node,
+          // insere o novo node entre o node atual e o próximo
+          if (current.next.priority < node.priority) {
+            node.next = current.next;
+            current.next = node;
+            break;
+          }
+        }
+
+        // Avança para o próximo node
+        current = current.next;
+      }
+    }
+
     this._size++;
-    return node;
+    this.print();
+
+    return { node, pos: position };
   }
 
   dequeue() {
@@ -76,13 +114,23 @@ export class LinkedQueue {
   }
 
   print() {
-    let front = this._front;
-    let pos = 1;
-    while (front !== null) {
-      const ticket = "BD" + front.ticket.toString().padStart(4, "0");
-      console.log(pos + ": " + front.name + " (" + ticket + ")");
-      front = front.next;
-      pos++;
+    console.log();
+    let current = this._front;
+    let position = 1;
+    while (current !== null) {
+      const ticket = "BD" + current.ticket.toString().padStart(4, "0");
+      console.log(
+        position +
+          ": " +
+          current.name +
+          " (" +
+          ticket +
+          " - Prioridade: " +
+          current.priority +
+          ")"
+      );
+      current = current.next;
+      position++;
     }
   }
 

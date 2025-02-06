@@ -5,6 +5,17 @@ const $nome = document.querySelector("#nome");
 const $posicao = document.querySelector("#posicao");
 const $senha = document.querySelector("#senha");
 const $cliente = document.querySelector("#cliente");
+const $prioridade = document.querySelector("#prioridade");
+const $prioridades = [
+  document.querySelector("#deficiencia-fisica"),
+  document.querySelector("#deficiencia-visual"),
+  document.querySelector("#deficiencia-auditiva"),
+  document.querySelector("#gestante"),
+  document.querySelector("#idoso"),
+  document.querySelector("#obesidade"),
+  document.querySelector("#lactante"),
+  document.querySelector("#autista"),
+];
 
 $continuar.addEventListener("click", continuar);
 
@@ -16,6 +27,14 @@ async function continuar() {
     return;
   }
 
+  let prioridade = 0;
+  for (const $prioridade of $prioridades) {
+    if ($prioridade.checked) {
+      const valor = parseInt($prioridade.value);
+      if (prioridade < valor) prioridade = valor;
+    }
+  }
+
   setLoading(true);
 
   try {
@@ -24,14 +43,15 @@ async function continuar() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ element: nome }),
+      body: JSON.stringify({ element: nome, priority: prioridade }),
     });
 
     const json = await response.json();
-    const { name, ticket, pos } = json;
+    const { name, ticket, priority, pos } = json;
 
     $cliente.textContent = name;
     $senha.textContent = `BD${ticket.toString().padStart(4, "0")}`;
+    $prioridade.style.display = priority === 0 ? "none" : null;
     $posicao.textContent = pos;
     $telaPrincipal.style.display = "none";
     $telaPronto.style.display = null;

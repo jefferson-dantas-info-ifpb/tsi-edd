@@ -16,29 +16,29 @@ class PriorityQueue {
   enqueue(value, priority) {
     const node = new Node(value, priority, null);
 
-    // if (this.isEmpty()) {
-    //   this._front = node;
-    //   this._tail = node;
-    // } else if (this._front.priority > node.priority) {
-    //   node.next = this._front;
-    //   this._front = node;
-    // } else {
-    //   let current = this._front;
-    //   while (current !== null) {
-    //     if (current.next) {
-    //       if (current.next.priority > node.priority) {
-    //         node.next = current.next;
-    //         current.next = node;
-    //         break;
-    //       }
-    //     } else {
-    //       current.next = node;
-    //       this._tail = node;
-    //       break;
-    //     }
-    //     current = current.next;
-    //   }
-    // }
+    if (this.isEmpty()) {
+      this._front = node;
+      this._tail = node;
+    } else if (this._front.priority < node.priority) {
+      node.next = this._front;
+      this._front = node;
+    } else {
+      let current = this._front;
+      while (current !== null) {
+        if (current.next) {
+          if (current.next.priority < node.priority) {
+            node.next = current.next;
+            current.next = node;
+            break;
+          }
+        } else {
+          current.next = node;
+          this._tail = node;
+          break;
+        }
+        current = current.next;
+      }
+    }
 
     // 1: Chegou 2º (prioridade: 1)
     // 2: Chegou 5º (prioridade: 1)
@@ -49,6 +49,17 @@ class PriorityQueue {
     // 7: Chegou 4º (prioridade: 3)
     // 8: Chegou 9º (prioridade: 3)
     // 9: Chegou 7º (prioridade: 4)
+
+    // INVERTIDO:
+    // 1: Chegou 7º (prioridade: 4)
+    // 2: Chegou 4º (prioridade: 3)
+    // 3: Chegou 9º (prioridade: 3)
+    // 4: Chegou 1º (prioridade: 2)
+    // 5: Chegou 3º (prioridade: 2)
+    // 6: Chegou 8º (prioridade: 2)
+    // 7: Chegou 2º (prioridade: 1)
+    // 8: Chegou 5º (prioridade: 1)
+    // 9: Chegou 6º (prioridade: 1)
 
     // // NÃO FUNCIONA
     // if (this.isEmpty()) {
@@ -65,23 +76,23 @@ class PriorityQueue {
     //   temp.next = node;
     // }
 
-    if (this.isEmpty()) {
-      this._front = node;
-      this._tail = node;
-    } else if (node.priority < this._front.priority) {
-      node.next = this._front;
-      this._front = node;
-    } else {
-      let temp = this._front;
-      while (temp.next !== null && temp.priority <= node.priority) {
-        temp = temp.next;
-      }
-      node.next = temp.next;
-      temp.next = node;
-      if (node.next === null) {
-        this._tail = node;
-      }
-    }
+    // if (this.isEmpty()) {
+    //   this._front = node;
+    //   this._tail = node;
+    // } else if (node.priority < this._front.priority) {
+    //   node.next = this._front;
+    //   this._front = node;
+    // } else {
+    //   let temp = this._front;
+    //   while (temp.next !== null && temp.priority <= node.priority) {
+    //     temp = temp.next;
+    //   }
+    //   node.next = temp.next;
+    //   temp.next = node;
+    //   if (node.next === null) {
+    //     this._tail = node;
+    //   }
+    // }
 
     this._size++;
     this.print();
@@ -148,17 +159,17 @@ class PriorityQueue {
 }
 
 const queue = new PriorityQueue();
-// queue.enqueue("Chegou 1º", 2);
-// queue.enqueue("Chegou 2º", 1);
-// queue.enqueue("Chegou 3º", 2);
-// queue.enqueue("Chegou 4º", 3);
-// queue.enqueue("Chegou 5º", 1);
-// queue.enqueue("Chegou 6º", 1);
-// queue.enqueue("Chegou 7º", 4);
-// queue.enqueue("Chegou 8º", 2);
-// queue.enqueue("Chegou 9º", 3);
+queue.enqueue("Chegou 1º", 2);
+queue.enqueue("Chegou 2º", 1);
+queue.enqueue("Chegou 3º", 2);
+queue.enqueue("Chegou 4º", 3);
+queue.enqueue("Chegou 5º", 1);
+queue.enqueue("Chegou 6º", 1);
+queue.enqueue("Chegou 7º", 4);
+queue.enqueue("Chegou 8º", 2);
+queue.enqueue("Chegou 9º", 3);
 
-queue.enqueue("João", 1);
-queue.enqueue("Maria", 0);
-queue.enqueue("Pedro", 2);
-queue.enqueue("Ryan", 1);
+// queue.enqueue("João", 1);
+// queue.enqueue("Maria", 0);
+// queue.enqueue("Pedro", 2);
+// queue.enqueue("Ryan", 1);

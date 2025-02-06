@@ -1,5 +1,6 @@
 const $senha = document.querySelector("#senha");
 const $cliente = document.querySelector("#cliente");
+const $prioridade = document.querySelector("#prioridade");
 const $telaPrincipal = document.querySelector("#tela-principal");
 
 let ultimaSenha;
@@ -8,12 +9,13 @@ const alerta = new Audio("sounds/alerta.mp3");
 async function verificar() {
   try {
     const response = await fetch("/front");
-    const { name, ticket } = await response.json();
+    const { name, ticket, priority } = await response.json();
 
-    $cliente.textContent = name || "---------------";
+    $cliente.textContent = name || " ";
     $senha.textContent = ticket
       ? `BD${ticket.toString().padStart(4, "0")}`
-      : "------";
+      : " ";
+    $prioridade.style.display = priority === 0 ? "none" : null;
 
     if (ultimaSenha === undefined) {
       ultimaSenha = ticket;

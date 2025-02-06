@@ -1,9 +1,9 @@
 import cors from "cors";
 import express from "express";
-import { LinkedQueue } from "./queue.js";
+import { PriorityQueue } from "./queue.js";
 
 const app = express();
-const queue = new LinkedQueue();
+const queue = new PriorityQueue();
 queue.enqueue("Ana Silva Oliveira");
 queue.enqueue("Bruno Souza Santos");
 queue.enqueue("Carla Lima Pereira");
@@ -21,8 +21,14 @@ app.get("/queue", (req, res) => {
 
 app.post("/enqueue", (req, res) => {
   const element = req.body.element;
-  const node = queue.enqueue(element);
-  res.send({ name: node.name, ticket: node.ticket, pos: queue.size() });
+  const priority = req.body.priority || 0;
+  const { node, pos } = queue.enqueue(element, priority);
+  res.send({
+    name: node.name,
+    ticket: node.ticket,
+    priority: node.priority,
+    pos: pos,
+  });
 });
 
 app.post("/find", (req, res) => {
@@ -31,6 +37,7 @@ app.post("/find", (req, res) => {
   res.send({
     name: node?.name || null,
     ticket: node?.ticket || null,
+    priority: node.priority,
     pos: pos,
   });
 });
@@ -40,6 +47,7 @@ app.get("/dequeue", function (req, res) {
   res.send({
     name: node?.name || null,
     ticket: node?.ticket || null,
+    priority: node.priority,
   });
 });
 
@@ -53,6 +61,7 @@ app.get("/front", function (req, res) {
   res.send({
     name: node?.name || null,
     ticket: node?.ticket || null,
+    priority: node.priority,
   });
 });
 
@@ -61,6 +70,7 @@ app.get("/rear", function (req, res) {
   res.send({
     name: node?.name || null,
     ticket: node?.ticket || null,
+    priority: node.priority,
   });
 });
 
@@ -70,5 +80,5 @@ app.get("/isEmpty", function (req, res) {
 });
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log("Servidor rodando na porta " + (process.env.PORT || 3000));
+  console.log("\n>> Servidor rodando na porta " + (process.env.PORT || 3000));
 });
