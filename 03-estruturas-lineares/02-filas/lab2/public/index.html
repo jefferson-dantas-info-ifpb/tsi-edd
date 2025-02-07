@@ -5,12 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
   </head>
 
-  <body class="flex h-screen">
-    <div class="w-72 bg-blue-700 flex flex-col border-r-[1rem] border-orange-400">
-      <div class="flex-1 text-white flex flex-col justify-center mb-4" style="writing-mode: sideways-lr">
+  <body class="flex flex-col md:flex-row md:h-screen bg-blue-50">
+    <div
+      class="bg-blue-700 flex items-center gap-4 p-2 md:hidden border-b-8 border-orange-400 mb-2"
+    >
+      <img src="img/bench.svg" alt="Logo do Banco" class="h-12" />
+      <div class="flex-1 text-white flex flex-col justify-center">
+        <div class="text-2xl font-extrabold">BANCO DIGITAL</div>
+        <div class="text-sm italic">O banco da tecnologia</div>
+      </div>
+    </div>
+
+    <div
+      class="w-72 bg-blue-700 hidden md:flex flex-col border-r-[1rem] border-orange-400"
+    >
+      <div
+        class="flex-1 text-white flex flex-col justify-center mb-4"
+        style="writing-mode: sideways-lr"
+      >
         <div class="text-8xl font-extrabold">BANCO<br />DIGITAL</div>
         <div class="text-xl ml-2 italic">O banco da tecnologia</div>
       </div>
@@ -19,13 +37,17 @@
       </div>
     </div>
 
-    <div class="flex flex-col flex-1 bg-blue-50 p-4 items-center justify-center text-center">
-      <div class="text-blue-700 text-3xl font-bold mb-4">BOAS VINDAS AO BANCO DIGITAL</div>
+    <div
+      class="flex flex-col flex-1 p-4 items-center justify-center text-center"
+    >
+      <div class="text-blue-700 text-3xl font-bold mb-4">
+        BOAS VINDAS AO BANCO DIGITAL
+      </div>
       <div class="text-xl mb-8">Por favor, selecione uma opção</div>
 
       <a
         href="atendimento.html"
-        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
+        class="flex items-center bg-blue-800 text-white font-medium text-2xl my-3 px-6 py-4 w-full max-w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
       >
         <div class="flex-1">Atendimento</div>
         <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>
@@ -33,7 +55,7 @@
 
       <a
         href="fila.html"
-        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
+        class="flex items-center bg-blue-800 text-white font-medium text-2xl my-3 px-6 py-4 w-full max-w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
       >
         <div class="flex-1">Consultar Posição na Fila</div>
         <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>
@@ -41,7 +63,7 @@
 
       <a
         href="tela.html"
-        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
+        class="flex items-center bg-blue-800 text-white font-medium text-2xl my-3 px-6 py-4 w-full max-w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
       >
         <div class="flex-1">Tela</div>
         <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>
@@ -49,7 +71,7 @@
 
       <a
         href="atendente.html"
-        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
+        class="flex items-center bg-blue-800 text-white font-medium text-2xl my-3 px-6 py-4 w-full max-w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition"
       >
         <div class="flex-1">Tela do Atendente</div>
         <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>

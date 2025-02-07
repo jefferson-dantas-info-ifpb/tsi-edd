@@ -11,9 +11,17 @@
     />
   </head>
 
-  <body class="flex h-screen">
+  <body class="flex flex-col md:flex-row md:h-screen bg-blue-50">
+    <div class="bg-blue-700 flex items-center gap-4 p-2 md:hidden border-b-8 border-orange-400 mb-2">
+      <img src="img/bench.svg" alt="Logo do Banco" class="h-12" />
+      <div class="flex-1 text-white flex flex-col justify-center">
+        <div class="text-2xl font-extrabold">BANCO DIGITAL</div>
+        <div class="text-sm italic">O banco da tecnologia</div>
+      </div>
+    </div>
+
     <div
-      class="w-72 bg-blue-700 flex flex-col border-r-[1rem] border-orange-400"
+      class="w-72 bg-blue-700 hidden md:flex flex-col border-r-[1rem] border-orange-400"
     >
       <div
         class="flex-1 text-white flex flex-col justify-center mb-4"
@@ -27,7 +35,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col flex-1 bg-blue-50 p-4" id="tela-principal">
+    <div class="flex flex-col flex-1 p-4" id="tela-principal">
       <div class="flex flex-col flex-1 items-center justify-center text-center">
         <div class="text-blue-700 text-3xl font-bold mb-4">ATENDIMENTO</div>
         <div class="text-xl mb-8">Por favor, digite seu nome</div>
@@ -37,11 +45,11 @@
           name="nome"
           id="nome"
           autofocus
-          class="w-[40rem] h-16 text-center text-2xl outline-none border-b-4 border-orange-400 rounded-t-md focus:shadow-xl transition-all disabled:opacity-50"
+          class="w-full max-w-[40rem] h-16 text-center text-2xl outline-none border-b-4 border-orange-400 rounded-t-md focus:shadow-xl transition-all disabled:opacity-50"
         />
 
         <div class="text-xl my-8">Você precisa de prioridade?</div>
-        <div class="grid grid-cols-4 gap-4 max-w-2xl">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl">
           <label>
             <input
               type="checkbox"
@@ -172,10 +180,10 @@
         </div>
       </div>
 
-      <div class="flex justify-between p-4">
+      <div class="flex justify-between md:px-4 py-4 flex-col md:flex-row gap-4 items-center">
         <a
           href="index.html"
-          class="flex items-center border-4 border-blue-800 text-blue-800 font-medium text-3xl px-6 py-4 w-[24rem] rounded-md shadow-md text-right hover:scale-110 active:scale-90 transition"
+          class="flex items-center border-4 border-blue-800 text-blue-800 font-medium text-2xl px-6 py-4 w-full sm:w-[24rem] rounded-md shadow-md text-right hover:scale-110 active:scale-90 transition"
         >
           <i class="fa-solid fa-caret-left text-4xl"></i>
           <div class="btn-text flex-1">Voltar</div>
@@ -183,7 +191,7 @@
 
         <button
           id="continuar"
-          class="flex items-center bg-blue-800 text-white font-medium text-3xl px-6 py-4 w-[24rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition disabled:opacity-50"
+          class="flex items-center bg-blue-800 text-white font-medium text-2xl px-6 py-4 w-full sm:w-[24rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition disabled:opacity-50"
         >
           <div class="btn-text flex-1">Continuar</div>
           <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>
@@ -192,7 +200,7 @@
     </div>
 
     <div
-      class="flex flex-col flex-1 bg-blue-50 p-4"
+      class="flex flex-col flex-1 p-4"
       id="tela-pronto"
       style="display: none"
     >
@@ -207,10 +215,10 @@
         <div
           class="border-4 border-gray-700 text-gray-700 px-8 py-16 rounded-2xl bg-yellow-50 shadow-xl"
         >
-          <div class="text-9xl font-semibold font-mono" id="senha"></div>
-          <div class="text-4xl font-medium font-mono mt-4" id="cliente"></div>
+          <div class="text-6xl md:text-9xl font-semibold font-mono" id="senha"></div>
+          <div class="text-lg md:text-4xl font-medium font-mono mt-4" id="cliente"></div>
           <div
-            class="text-4xl font-medium mt-4"
+            class="text-2xl md:text-4xl font-medium mt-4"
             id="prioridade"
             style="display: none"
           >
@@ -221,10 +229,10 @@
       </div>
 
       <!-- Ações -->
-      <div class="flex justify-between p-4">
+      <div class="flex justify-between md:px-4 py-4 flex-col md:flex-row gap-4 items-center">
         <a
           href="index.html"
-          class="flex items-center border-4 border-blue-800 text-blue-800 font-medium text-3xl px-6 py-4 w-[24rem] rounded-md shadow-md text-right hover:scale-110 active:scale-90 transition"
+          class="flex items-center border-4 border-blue-800 text-blue-800 font-medium text-2xl px-6 py-4 w-full sm:w-[24rem] rounded-md shadow-md text-right hover:scale-110 active:scale-90 transition"
         >
           <i class="fa-solid fa-caret-left text-4xl"></i>
           <div class="btn-text flex-1">Voltar</div>

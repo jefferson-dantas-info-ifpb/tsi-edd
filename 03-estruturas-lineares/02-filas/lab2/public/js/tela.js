@@ -47,7 +47,7 @@ async function listarProximos() {
     }
   }
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 1; i < 5; i++) {
     const item = items[i];
     $fila.innerHTML += `
       <li class="flex items-center gap-6 w-full bg-blue-100 px-4 py-3 text-[1.3rem] font-mono rounded-md mb-2">
@@ -73,6 +73,28 @@ setInterval(listarProximos, 1000);
 verificar();
 listarProximos();
 
+let voice;
+
+speechSynthesis.addEventListener("voiceschanged", () => {
+  const voices = speechSynthesis.getVoices();
+  const bestVoices = [
+    "Microsoft Antonio Online (Natural) - Portuguese (Brazil)",
+    "Microsoft Francisca Online (Natural) - Portuguese (Brazil)",
+    "Google português do Brasil",
+    "Microsoft Daniel - Portuguese (Brazil)",
+  ];
+
+  for (const bv of bestVoices) {
+    for (const v of voices) {
+      console.log(bv, v.name, v.name === bv);
+      if (v.name === bv) {
+        voice = v;
+        return;
+      }
+    }
+  }
+});
+
 function chamarSenha(name, ticket) {
   $telaPrincipal.classList.remove("alerta");
   setTimeout(() => $telaPrincipal.classList.add("alerta"), 100);
@@ -86,6 +108,7 @@ function chamarSenha(name, ticket) {
     const utterance = new SpeechSynthesisUtterance(
       `Senha B D ${zeros}${ticket}. ${name}. Favor, comparecer ao guichê mais próximo`
     );
+    utterance.voice = voice;
     window.speechSynthesis.speak(utterance);
   }
 }

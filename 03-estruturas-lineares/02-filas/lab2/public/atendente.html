@@ -11,9 +11,17 @@
     />
   </head>
 
-  <body class="flex h-screen">
+  <body class="flex flex-col md:flex-row md:h-screen bg-blue-50 flex-col md:flex-row">
+    <div class="bg-blue-700 flex items-center gap-4 p-2 md:hidden border-b-8 border-orange-400 mb-2">
+      <img src="img/bench.svg" alt="Logo do Banco" class="h-12" />
+      <div class="flex-1 text-white flex flex-col justify-center">
+        <div class="text-2xl font-extrabold">BANCO DIGITAL</div>
+        <div class="text-sm italic">O banco da tecnologia</div>
+      </div>
+    </div>
+
     <div
-      class="w-72 bg-blue-700 flex flex-col border-r-[1rem] border-orange-400"
+      class="w-72 bg-blue-700 hidden md:flex flex-col border-r-[1rem] border-orange-400"
     >
       <div
         class="flex-1 text-white flex flex-col justify-center mb-4"
@@ -28,18 +36,18 @@
     </div>
 
     <div
-      class="flex flex-col flex-1 bg-blue-50 p-4 items-center justify-center text-center"
+      class="flex flex-col flex-1 p-4 items-center justify-center text-center"
     >
       <div class="text-blue-700 text-3xl font-bold mb-4">CLIENTE ATUAL</div>
       <div
         class="border-4 border-gray-700 text-gray-700 px-8 py-16 rounded-2xl bg-yellow-50 shadow-xl my-8"
       >
-        <div class="text-9xl font-semibold font-mono" id="senha">&nbsp;</div>
-        <div class="text-4xl font-medium font-mono mt-4" id="cliente">
+        <div class="text-6xl md:text-9xl font-semibold font-mono" id="senha">&nbsp;</div>
+        <div class="text-lg md:text-4xl font-medium font-mono mt-4" id="cliente">
           &nbsp;
         </div>
         <div
-          class="text-4xl font-medium mt-4"
+          class="text-2xl md:text-4xl font-medium mt-4"
           id="prioridade"
           style="display: none"
         >
@@ -51,7 +59,7 @@
       <button
         href="atendimento.html"
         id="chamar"
-        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[31rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition disabled:opacity-50"
+        class="flex items-center bg-blue-800 text-white font-medium text-2xl my-3 px-6 py-4 w-full max-w-[31rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition disabled:opacity-50"
       >
         <div class="btn-text flex-1">Chamar próximo cliente</div>
         <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>
@@ -59,7 +67,7 @@
     </div>
 
     <div
-      class="flex flex-col flex-1 bg-blue-50 p-4 items-center justify-center text-center"
+      class="flex flex-col flex-1 p-4 items-center justify-center text-center"
     >
       <div class="text-blue-700 text-3xl font-bold mb-12">
         PRÓXIMOS CLIENTES
