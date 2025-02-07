@@ -13,6 +13,7 @@ export class PriorityQueue {
     this._tail = null;
     this._size = 0;
     this._ticket = 0;
+    this._dequeueTimes = [];
   }
 
   enqueue(name, priority = 0) {
@@ -24,12 +25,6 @@ export class PriorityQueue {
     if (this.isEmpty()) {
       this._front = node;
       this._tail = node;
-    }
-
-    // Se a prioridade do primeiro node for menor que a prioridade do novo node, insere na frente
-    else if (this._front.priority < node.priority) {
-      node.next = this._front;
-      this._front = node;
     }
 
     // Procura a posição correta para inserir o node
@@ -60,7 +55,6 @@ export class PriorityQueue {
     }
 
     this._size++;
-    this.print();
 
     return { node, pos: position };
   }
@@ -73,6 +67,7 @@ export class PriorityQueue {
     const front = this.front();
     this._front = this._front.next;
     this._size--;
+    this._dequeueTimes.push(Date.now());
     return front;
   }
 
@@ -113,6 +108,18 @@ export class PriorityQueue {
     return { node: null, pos: -1 };
   }
 
+  timeAvg() {
+    if (this._dequeueTimes.length <= 1) return null;
+    const latestSix = this._dequeueTimes.slice(-6);
+    const times = [];
+    for (let i = latestSix.length - 1; i > 0; i--) {
+      times.push(latestSix[i] - latestSix[i - 1]);
+    }
+    const sum = times.reduce((acc, cur) => acc + cur, 0);
+    const avg = sum / times.length;
+    return avg;
+  }
+
   print() {
     console.log();
     let current = this._front;
@@ -138,7 +145,11 @@ export class PriorityQueue {
     const array = [];
     let front = this._front;
     while (front !== null) {
-      array.push(front.name);
+      array.push({
+        name: front.name,
+        ticket: front.ticket,
+        priority: front.priority,
+      });
       front = front.next;
     }
     return array;

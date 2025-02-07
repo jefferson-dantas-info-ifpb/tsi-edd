@@ -28,34 +28,31 @@
       </div>
     </div>
 
-    <div class="flex flex-col flex-1 bg-blue-50">
+    <div class="flex flex-col flex-1 bg-blue-50 relative">
       <div class="flex" style="flex: 2">
-        <div class="flex-1 border-r-[1rem] border-orange-400">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube-nocookie.com/embed/TKmGU77INaM?si=oALpla7PQlwu2upy&amp;controls=0&autoplay=1&mute=1"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+        <div class="bg-blue-50 text-center p-4 py-8" style="flex: 0.5">
+          <div class="text-blue-700 text-4xl font-bold mb-6">PRÓXIMOS</div>
+          <ol class="text-left" id="fila"></ol>
+
+          <div class="text-blue-700 text-4xl font-bold my-6">
+            TEMPO MÉDIO DE ESPERA
+          </div>
+          <div class="text-2xl italic" id="tempo">-----</div>
         </div>
 
-        <div
-          class="bg-blue-50 flex flex-col items-center justify-center text-center p-4"
-          style="flex: 0.5"
-          id="tela-principal"
-        >
-          <div class="text-blue-700 text-4xl font-bold mb-6">SENHA</div>
+        <div class="flex-1 border-l-[1rem] border-orange-400 flex flex-col">
           <div
-            class="border-4 border-gray-700 text-gray-700 px-8 py-8 rounded-2xl bg-yellow-50 shadow-xl"
+            class="flex flex-col items-center justify-center flex-1 text-center text-white bg-blue-900 z-20"
+            id="tela-principal"
           >
-            <div class="text-9xl font-semibold font-mono" id="senha">
-              &nbsp;
+            <div
+              class="text-9xl font-semibold font-mono text-nowrap"
+              id="senha"
+            >
+              ------
             </div>
             <div class="text-4xl font-medium font-mono mt-4" id="cliente">
-              &nbsp;
+              ----------
             </div>
             <div
               class="text-4xl font-medium mt-4"
@@ -67,9 +64,15 @@
             </div>
           </div>
 
-          <div class="text-3xl mt-6 italic">
-            Por favor, compareça ao guichê mais próximo
-          </div>
+          <iframe
+            class="w-full aspect-video border-t-[1rem] border-orange-400"
+            src="https://www.youtube-nocookie.com/embed/ABVQXgr2LW4?si=lAA5aIwcYC_2MW0z&controls=0&autoplay=1&mute=1"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
 

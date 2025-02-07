@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/queue", (req, res) => {
-  res.send({ items: queue.items });
+  res.send({ items: queue.toArray(), timeAvg: queue.timeAvg() });
 });
 
 app.post("/enqueue", (req, res) => {
@@ -37,8 +37,8 @@ app.post("/find", (req, res) => {
   res.send({
     name: node?.name || null,
     ticket: node?.ticket || null,
-    priority: node.priority,
-    pos: pos,
+    priority: node?.priority || null,
+    pos: pos || null,
   });
 });
 
@@ -47,7 +47,7 @@ app.get("/dequeue", function (req, res) {
   res.send({
     name: node?.name || null,
     ticket: node?.ticket || null,
-    priority: node.priority,
+    priority: node?.priority || null,
   });
 });
 
@@ -61,7 +61,7 @@ app.get("/front", function (req, res) {
   res.send({
     name: node?.name || null,
     ticket: node?.ticket || null,
-    priority: node.priority,
+    priority: node?.priority || null,
   });
 });
 
@@ -70,7 +70,7 @@ app.get("/rear", function (req, res) {
   res.send({
     name: node?.name || null,
     ticket: node?.ticket || null,
-    priority: node.priority,
+    priority: node?.priority || null,
   });
 });
 

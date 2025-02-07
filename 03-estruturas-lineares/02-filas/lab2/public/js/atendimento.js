@@ -55,7 +55,7 @@ async function continuar() {
 
     $cliente.textContent = name;
     $senha.textContent = `BD${ticket.toString().padStart(4, "0")}`;
-    $prioridade.style.display = priority === 0 ? "none" : null;
+    $prioridade.style.display = priority <= 0 ? "none" : null;
     $posicao.textContent = pos;
     $telaPrincipal.style.display = "none";
     $telaPronto.style.display = null;

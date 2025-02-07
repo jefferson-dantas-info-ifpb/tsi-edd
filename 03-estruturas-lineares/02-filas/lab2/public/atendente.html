@@ -51,11 +51,20 @@
       <button
         href="atendimento.html"
         id="chamar"
-        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[36rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition disabled:opacity-50"
+        class="flex items-center bg-blue-800 text-white font-medium text-3xl my-3 px-6 py-4 w-[31rem] rounded-md shadow-md text-left hover:bg-blue-700 hover:scale-110 active:scale-90 transition disabled:opacity-50"
       >
         <div class="btn-text flex-1">Chamar próximo cliente</div>
         <i class="fa-solid fa-caret-right text-orange-300 text-4xl"></i>
       </button>
+    </div>
+
+    <div
+      class="flex flex-col flex-1 bg-blue-50 p-4 items-center justify-center text-center"
+    >
+      <div class="text-blue-700 text-3xl font-bold mb-12">
+        PRÓXIMOS CLIENTES
+      </div>
+      <ol class="w-full text-left" id="fila"></ol>
     </div>
 
     <script type="module" src="js/atendente.js"></script>
