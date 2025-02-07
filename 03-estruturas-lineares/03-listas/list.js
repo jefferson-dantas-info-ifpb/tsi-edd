@@ -14,18 +14,42 @@ function insert(position, element) {
   items[position] = element;
 }
 
-// Fazer em casa com for
 function remove(element) {
-    return removeAt(indexOf(element));
+  // return removeAt(indexOf(element));
+
+  let excluiu = false;
+  for (let i = 0; i < size(); i++) {
+    if (items[i] === element) {
+      delete items[i];
+      excluiu = true;
+    }
+
+    if (excluiu) {
+      items[i] = items[i + 1];
+    }
+  }
+
+  items.length--;
 }
 
-// Fazer em casa com for
 function removeAt(position) {
-  return items.splice(position, 1);
+  // return items.splice(position, 1)
+
+  for (let i = position; i < size(); i++) {
+    items[i] = items[i + 1];
+  }
+
+  items.length--;
 }
 
 function indexOf(element) {
-  return items.indexOf(element);
+  // return items.indexOf(element)
+
+  for (let i = 0; i < size(); i++) {
+    if (items[i] === element) return i;
+  }
+
+  return -1;
 }
 
 function isEmpty() {
