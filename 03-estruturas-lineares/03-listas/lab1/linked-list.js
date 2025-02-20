@@ -1,4 +1,4 @@
-export class Node {
+class Node {
   constructor(element, next = null) {
     this.element = element;
     this.next = next;
@@ -53,7 +53,7 @@ export class LinkedList {
     if (pos >= 0) {
       return this.removeAt(pos);
     }
-    return null;
+    return null
   }
 
   removeAt(position) {
@@ -70,7 +70,7 @@ export class LinkedList {
     while (currentNode !== null) {
       let nextPosition = currentPosition + 1;
       if (nextPosition === position) {
-        const node = currentNode.next;
+        const node = currentNode.next
         currentNode.next = currentNode.next.next;
         this._size--;
         return node;
@@ -132,23 +132,3 @@ export class LinkedList {
     this._size = 0;
   }
 }
-
-/**
- * 1. Fazer tela padrão para manipular lista
- * 2. Fazer lista duplamente ligada (prev e next)
- * 3. Projeto sobre lista
- */
-
-const linkedList = new LinkedList();
-// linkedList.insert(0, "A");
-// linkedList.insert(1, "B");
-// linkedList.insert(2, "C");
-linkedList.append("A");
-linkedList.append("B");
-linkedList.append("C");
-linkedList.print();
-linkedList.remove("C");
-linkedList.print();
-linkedList.insert(1, "D");
-linkedList.print();
-console.log(linkedList.indexOf("AAA"));
